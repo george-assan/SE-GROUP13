@@ -41,7 +41,7 @@ class User extends adb
     * A function to retrieve user for the database. 
     * @return returns a boolean value
     **/
-    function  getUser($username,password){
+    function  getUser($username,$password){
         $str_query = "Select * from users where username='$username' AND password='$password'";
         return $this->query ($str_query);
     }

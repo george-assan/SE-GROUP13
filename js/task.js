@@ -18,6 +18,10 @@ function login(){
      var url = "php/task_controller.php?cmd=3&uname="+uname+"&pword="+pword;
                var obj = sendRequest ( url );
 
+    if(obj.permission == 0){
+      location.href = "admin-dashboard.html";
+    }
+
 }//end of login function
 
 function addTask(){
