@@ -12,14 +12,20 @@ function sendRequest ( u )
   * to the task controller.php
   */
 function login(){
-    var pword = encodeURI(document.getElementById("username").value);
-     var uname = encodeURI(document.getElementById("password").value);
+    var uname = encodeURI(document.getElementById("username").value);
+     var pword = encodeURI(document.getElementById("password").value);
 
      var url = "php/task_controller.php?cmd=3&uname="+uname+"&pword="+pword;
                var obj = sendRequest ( url );
 
     if(obj.permission == 0){
       location.href = "admin-dashboard.html";
+    }
+    else if(obj.permission == 1){
+      location.href = "supervisor-dashboard.html";
+    }
+    else if(obj.permission == 2){
+        location.href = "nurse-dashboard.html";
     }
 
 }//end of login function
