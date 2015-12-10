@@ -27,7 +27,7 @@ body {
   padding:auto;
 }
 
-.login-card input[type=submit] {
+.login-card button {
   width: 100%;
   display: block;
   margin-bottom: 10px;

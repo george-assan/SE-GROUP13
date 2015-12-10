@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 if ( isset ( $_REQUEST [ 'cmd' ] ) )
 {
@@ -13,12 +13,41 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
         case 2:
             displayTask ( );
             break;
+        case 3:
+            login ( );
+            break;
         default:
             echo '{"result":0,message:"failed command"}';
             break;
     }//end of switch
     
-}//
+}//end of if statement
+
+/*
+Function to start session with details of user obtained from calling the getUser method of the user object it creates
+
+*/
+function login(){
+	include("user.php");
+	$obj=new User();
+	$uname=$_REQUEST['uname'];
+	$pword=$_REQUEST['pword'];
+	if(!$obj->getUser($uname,$pword)){
+		echo '{"result":0,"message": "failed to access user information"}';
+	}
+	else{
+	$row=$obj->fetch();	
+	$_SESSION['userid']=$row['id'];
+	$_SESSION['username']=$row['username'];
+	$_SESSION['password']=$row['password'];
+	$_SESSION['permission']=$row['permission'];
+	getUserDetails();
+	}
+}
+
+function getUserDetails(){
+	echo '{"id":'.$_SESSION['userid'].',"username": "'.$_SESSION['username'].'","permission":"'.$_SESSION['permission'].'"}';
+}
 
 function addtask(){
 	include("task.php");

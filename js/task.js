@@ -1,7 +1,3 @@
-$ ( document ).ready ( function ( )
-            {
-              displayTasks();
-              });
 
 
 
@@ -11,6 +7,18 @@ function sendRequest ( u )
                 var result=$.parseJSON(obj.responseText);
                 return result;
            }//end of sendrequest
+
+/** This function takes in the values from the login form input elements and makes an ajax call
+  * to the task controller.php
+  */
+function login(){
+    var pword = encodeURI(document.getElementById("username").value);
+     var uname = encodeURI(document.getElementById("password").value);
+
+     var url = "php/task_controller.php?cmd=3&uname="+uname+"&pword="+pword;
+               var obj = sendRequest ( url );
+
+}//end of login function
 
 function addTask(){
 
@@ -23,18 +31,7 @@ function addTask(){
                var obj = sendRequest ( url );
                refreshAddForm();
 			   }
-function refreshAddForm(){
-	  document.getElementById("taskname").value ="";
-      document.getElementById("description").value ="";
-      document.getElementById("sdate").value = "";
-      document.getElementById("ddate").value = ""; 
-}
 
-function bgChange(selObj) {
-  newColor = selObj.options[selObj.selectedIndex].text;
-  $("#titlebar").css("color", newColor);
-  selObj.selectedIndex = -1;
-  }
 
 function displayTasks(){
   var url = "./php/task_controller.php?cmd=2";
