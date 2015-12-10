@@ -26,14 +26,13 @@ function login(){
 
 function addTask(){
 
-            var taskname = encodeURI(document.getElementById("taskname").value);
+            var taskname = encodeURI(document.getElementById("title").value);
             var des = encodeURI(document.getElementById("description").value);
-            var sdate = encodeURI(document.getElementById("sdate").value);
-            var ddate = encodeURI(document.getElementById("ddate").value);
-
-             var url = "./php/task_controller.php?cmd=1&nme="+taskname+"&ddate="+ddate+"&des="+des+"&sdate="+sdate;
+            var ddate = encodeURI(document.getElementById("datepicker").value);
+              var sid =encodeURI(document.getElementById("id").value);
+             var url = "php/task_controller.php?cmd=1&nme="+taskname+"&ddate="+ddate+"&des="+des+"&sid="+sid;
                var obj = sendRequest ( url );
-               refreshAddForm();
+            
 			   }
 
 
@@ -52,3 +51,58 @@ function displayTasks(){
         
        }
 }
+
+function populateCenterCombo(){
+
+     var url = "php/task_controller.php?cmd=4";
+      var obj = sendRequest ( url );
+
+      var i = 0;
+        var sel ="";
+        if(obj.result== 1){
+          for(;i<obj.centers.length; i++){
+            var sel="<option value="+obj.centers[i].id+">"+obj.centers[i].center_name+"</option>";
+
+          }
+        }
+        $("#centerCombo").html(sel);
+
+}
+
+function displayAddTaskForm(){
+    var panel = " <h2 id='user'></h2><form role='form'><div class='form-group'><label for='id'>Id:</label><input type='text' class='form-control' id='id'></div><div class='form-group'><label for='title'>Task title:</label><input type='text' class='form-control' id='title'></div><div class='form-group'><label  for='description'>Description</label><textarea class='form-control' rows='4' id='description' placeholder='Enter task description' required></textarea></div><div><label for='datepicker' >Due date</label><input id='datepicker'type='date' name='ddate' required></div></form><button onclick='addTask()' class='btn btn-default'>Submit</button> ";
+
+    $("#addtaskform").html(panel);
+    var index = document.getElementById("centerCombo").value;
+    var url = "php/task_controller.php?cmd=5&id="+index;
+      var obj = sendRequest ( url );
+
+      var i = 0;
+
+       $("#user").html("Supervisor: "+obj.supervisor[i].firstname + " "+obj.supervisor[i].lastname );
+        var text =  document.getElementById("id");
+          text.value = obj.supervisor[i].id ;
+
+}
+
+function getUnassignedTasks(){
+
+     var url = "php/task_controller.php?cmd=6";
+               var obj = sendRequest ( url );
+        var i = 0;
+        var panel ="";
+          if(obj.result== 1){
+
+        for(;i<obj.tasks.length; i++){
+          panel = panel + "<div class='panel panel-default'><div class='panel-body'><div><span style='float:left'><p><b>"+obj.tasks[i].title+"</b></p><p>"+obj.tasks[i].center_name+"</p></span><span id='editbtn'><button>edit</button></span></div></div></div>";
+              }
+       $(".container-fluid").html(panel); 
+      }
+       else{
+        
+       }
+
+}
+
+
+

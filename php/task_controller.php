@@ -8,7 +8,7 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
     switch ( $cmd )
     {
         case 1:
-            addtask ( );
+            adminaddtask ( );
             break;
         case 2:
             displayTask ( );
@@ -16,6 +16,15 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
         case 3:
             login ( );
             break;
+        case 4:
+            getCenters ( );
+            break; 
+         case 5:
+           getSupervisorOfCenter();
+            break; 
+         case 6:
+           getUnassignedtask();
+            break;    
         default:
             echo '{"result":0,message:"failed command"}';
             break;
@@ -49,16 +58,15 @@ function getUserDetails(){
 	echo '{"id":'.$_SESSION['userid'].',"username": "'.$_SESSION['username'].'","permission":"'.$_SESSION['permission'].'"}';
 }
 
-function addtask(){
+function adminaddtask(){
 	include("task.php");
 	$obj=new task();
 	$name=$_REQUEST['nme'];
 	$ddate=$_REQUEST['ddate'];
 	$des=$_REQUEST['des'];
-	$sdate=$_REQUEST['sdate'];
-	$supv_id = 1;
-	$nurse_id =1;
-	if(!$obj->add_task($name,$sdate,$ddate,$des,$nurse_id,$supv_id)){
+	$supv_id=$_REQUEST['sid'];
+	
+	if(!$obj->add_task($name,$ddate,$des,$supv_id)){
 		echo  '{"result":0,"message": "failed to add task"}';
 	}
 	else{
@@ -86,6 +94,74 @@ function displaytask(){
 		}
 	}
 	echo "]}";	
+
+}
+
+function getCenters(){
+	include("center.php");
+	$obj=new Center();
+	if(!$obj->getCenters()){
+		echo '{"result":0,"message": "failed to display"}';
+		return;
+	}
+	//at this point the search has been successful. 
+	//generate the JSON message to echo to the browser
+	$row=$obj->fetch();
+	echo '{"result":1,"centers":[';	//start of json object
+	while($row){
+		echo json_encode($row);			//convert the result array to json object
+		$row=$obj->fetch();
+		if($row){
+			echo ",";					//if there are more rows, add comma 
+		}
+	}
+	echo "]}";	
+}
+
+function getSupervisorOfCenter(){
+	include("supervisor.php");
+	$id = $_REQUEST['id'];
+	$obj=new Supervisor();
+	if(!$obj->getSupervisorOfCenter($id)){
+		echo '{"result":0,"message": "failed to display"}';
+		return;
+	}
+	//at this point the search has been successful. 
+	//generate the JSON message to echo to the browser
+	$row=$obj->fetch();
+	echo '{"result":1,"supervisor":[';	//start of json object
+	while($row){
+		echo json_encode($row);			//convert the result array to json object
+		$row=$obj->fetch();
+		if($row){
+			echo ",";					//if there are more rows, add comma 
+		}
+	}
+	echo "]}";	
+}
+
+
+function getUnassignedtask(){
+
+	include("task.php");
+	$obj=new task();
+	if(!$obj->getUnassignedTasks()){
+		echo '{"result":0,"message": "failed to display"}';
+		return;
+	}
+	//at this point the search has been successful. 
+	//generate the JSON message to echo to the browser
+	$row=$obj->fetch();
+	echo '{"result":1,"tasks":[';	//start of json object
+	while($row){
+		echo json_encode($row);			//convert the result array to json object
+		$row=$obj->fetch();
+		if($row){
+			echo ",";					//if there are more rows, add comma 
+		}
+	}
+	echo "]}";	
+
 
 }
 ?>

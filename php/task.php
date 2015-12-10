@@ -35,11 +35,9 @@ class Task extends adb
 	* @return returns a boolean value
     **/
 
-    function add_task ($name,$start_date,$due_date,$description,$nurse_id,$superviser_id)
+    function add_task ($name,$due_date,$description,$superviser_id)
     {
-		$insert_query = "insert into task set task_name='$name',start_date = '$start_date', due_date = '$due_date'," .
-		                "description ='$description', nurse_id = '1'," .
-						" superviser_id = '1'";
+		$insert_query = "insert into tasks set title='$name', enddate = '$due_date',description ='$description', sid = '$superviser_id', assigned='0',status='uncompleted'";
         return $this->query ($insert_query);
     }
     /**
@@ -48,6 +46,12 @@ class Task extends adb
     **/
     function  getTasks(){
         $str_query = "Select * from task";
+        return $this->query ($str_query);
+    }
+
+
+    function  getUnassignedTasks(){
+        $str_query = "Select * from tasks,supervisors,centers where tasks.assigned='0' and tasks.sid=supervisors.id and supervisors.centerid=centers.id";
         return $this->query ($str_query);
     }
 }

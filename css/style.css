@@ -21,6 +21,12 @@ body{
 	margin-top:66px;
 	color:white;
 }
+#pagetitle{
+		color:white;
+		font-size:20px;
+		margin-left:30px;
+
+}
 .page-header1 span{
 	
 	padding-left:10%;
@@ -37,12 +43,14 @@ text-decoration: none;
 
 color:#000000;
 text-decoration: none;
+font-weight: bold;
 }
 .page-header1 a:active,
 .page-header1 a:focus {
 
 color:#000000;
 text-decoration: none;
+font-weight: bold;
 }
 
 #page-content-wrapper{
@@ -85,4 +93,10 @@ padding-top:120px
 	float:right;
 	
 	margin-right:100px;
+}
+
+#menu-toggle{
+
+	color:#3d3c42;
+	text-decoration: none;
 }

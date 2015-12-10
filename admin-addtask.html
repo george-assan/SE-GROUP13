@@ -15,7 +15,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-
+    <script src="js/task.js"></script>
+    <script src="js/jquery-2.1.4.js"></script>
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
      <link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css" type="text/css">
@@ -30,7 +31,13 @@
     <![endif]-->
 
 </head>
+<script>
+    $(document).ready(function(){
 
+        populateCenterCombo();
+    });
+
+</script>
 <body>
 
     <div id="wrapper">
@@ -57,23 +64,30 @@
 
         <div id="page-content-wrapper" style="margin:0px;padding:0px">
 
-        <div  class="page-header"><a href="#menu-toggle" class="fa fa-bars fa-2x" id="menu-toggle" ><i></i></a>                <img id="logoholder2"src="images/taskgenie1.png" width="100px">
+        <div  class="page-header"><a href="#menu-toggle" class="fa fa-bars fa-2x" id="menu-toggle" ></a><span id="pagetitle">Add task</span><img id="logoholder2"src="images/taskgenie1.png" width="100px">
                         <a href="#menu-toggle"  id="logindetails"><b>Admin</b></a>
 
-                    </div></div>
+                    </div>
         <div  class="page-header1">
 
         <a href="admin-addtask.html"><span>Add task</span></a>
-          <a><span>Active task</span></a>
+          <a ><span>Active task</span></a>
             <a href="admin-unassignedtasks.html"><span>Unassigned tasks</span></a>
             <a><span>Completed tasks</span></a>
         </div>
        
-            <div class="container-fluid" >
-               
-                <div class="panel panel-default">
-  <div class="panel-body"><div><span style="float:left"><p><b>jjkj</b></p><p>jjkj</p></span><span id="editbtn"><button>edit</button></span></div>
-</div>
+        <div class="container-fluid" >
+
+                <div class="form-group" id="getCenterForm">
+                 <label for="centerCombo">Enter Center:</label>
+                        <select class="form-control" id="centerCombo" required>
+                        </select>
+                    </div>
+             <button onclick="displayAddTaskForm()" class="btn btn-default">Submit</button>
+            <div id="addtaskform">
+                    
+              
+            </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
