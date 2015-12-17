@@ -18,32 +18,40 @@ class center extends adb
     /**
     * Constructor for center class
     **/
-    function  Center ( ){
+    function  center ( ){
     }
 	 
     /**
-    * A function to add a tuser. Using the values given to it submits a 
+    * A function to add a user. Using the values given to it submits a 
     * a query to the adb class and returns a boolean value based on
 	* whether the entry was successful
 	*
-	* @param $name TThe name of the center
-    * @param $location The location of center 
+	* @param String $name The name of the center
+    * @param String $location The location of center 
 	*
-	* @return returns a boolean value
+	* @return boolean true when successful and false else.
     **/
 
-    function add_center($name,$location)
+    function add_center($center_name,$location)
     {
-		$insert_query = "insert into centers set center_name='$name',location = '$location'";
+		$insert_query = "insert into centers set center_name='$center_name',location = '$location'";
         return $this->query ($insert_query);
     }
     /**
     * A function to retrieve user for the database. 
     * @return returns a boolean value
     **/
-    function  getCenters(){
+    function  view_center(){
         $str_query = "Select * from centers";
         return $this->query ($str_query);
+    }
+    /**
+    * A function to delete a center from the table. 
+    * @return returns a boolean value
+    **/
+    function delete_center($id){
+        $str = "delete from centers where id='$id'";
+        return $this->query ($str);
     }
   
 
