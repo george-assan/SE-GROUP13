@@ -1,30 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Dec 10, 2015 at 10:24 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `ntaskmanager`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `centers`
---
 
 CREATE TABLE IF NOT EXISTS `centers` (
 `id` int(11) NOT NULL,
@@ -32,18 +11,14 @@ CREATE TABLE IF NOT EXISTS `centers` (
   `location` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `centers`
---
+
 
 INSERT INTO `centers` (`id`, `center_name`, `location`) VALUES
 (1, 'Berekuso Health Center', 'Eastern region-Berekuso township');
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `nurses`
---
+
 
 CREATE TABLE IF NOT EXISTS `nurses` (
 `id` int(11) NOT NULL,
