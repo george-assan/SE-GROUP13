@@ -41,19 +41,41 @@ class Task extends adb
         return $this->query ($insert_query);
     }
     /**
-    * A function to retrieve tasks for the database. 
+    * A function to allretrieve tasks from the database. 
     * @return returns a boolean value
     **/
     function  getTasks(){
         $str_query = "Select * from task";
         return $this->query ($str_query);
     }
-
+    /**
+    * A function to retrieve Unassigned tasks from the database. 
+    * @return returns a boolean value
+    **/
 
     function  getUnassignedTasks(){
         $str_query = "Select * from tasks,supervisors,centers where tasks.assigned='0' and tasks.sid=supervisors.id and supervisors.centerid=centers.id";
         return $this->query ($str_query);
     }
+    /**
+    * A function to retrieve Completed tasks from the database. 
+    * @return returns a boolean value
+    **/
+     function  getCompletedtasks(){
+        $str_query = "Select * from tasks,supervisors where tasks.status='completed' and tasks.sid=supervisors.id ";
+        return $this->query ($str_query);
+    }
+
+    /**
+    * A function to retrieve active tasks from the database. 
+    * @return returns a boolean value
+    **/
+    function getActivetasks(){
+         $str_query = "Select * from tasks,supervisors where tasks.assigned='0' and tasks.sid=supervisors.id ";
+        return $this->query ($str_query);
+
+    }
 }
+
 
 ?>

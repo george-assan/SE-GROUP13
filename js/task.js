@@ -110,5 +110,44 @@ function getUnassignedTasks(){
 
 }
 
+function getCompletedTasks(){
+
+     var url = "php/task_controller.php?cmd=7";
+               var obj = sendRequest ( url );
+        var i = 0;
+        var panel ="";
+          if(obj.result== 1){
+
+        for(;i<obj.tasks.length; i++){
+          panel = panel + "<div class='panel panel-default'><div class='panel-body'><div><span style='float:left'><p><b>"+obj.tasks[i].title+"</b></p><p>"+obj.tasks[i].firstname+" "+obj.tasks[i].lastname+"</p></span><span id='editbtn'><button>edit</button></span></div></div></div>";
+              }
+       $(".container-fluid").html(panel); 
+      }
+       else{
+        
+       }
+
+}
+
+
+function getActiveTasks(){
+
+     var url = "php/task_controller.php?cmd=8";
+               var obj = sendRequest ( url );
+        var i = 0;
+        var panel ="";
+          if(obj.result== 1){
+
+        for(;i<obj.tasks.length; i++){
+          panel = panel + "<div class='panel panel-default'><div class='panel-body'><div><span style='float:left'><p><b>"+obj.tasks[i].title+"</b></p><p>"+obj.tasks[i].firstname+" "+obj.tasks[i].lastname+"</p></span><span id='editbtn'><button>edit</button></span></div></div></div>";
+              }
+       $(".container-fluid").html(panel); 
+      }
+       else{
+        
+       }
+
+}
+
 
 
