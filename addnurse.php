@@ -67,19 +67,23 @@
 								<form>
 									<div class="form-group">
 									<label style="color:#454445;" >Firstname</label>
-									<input type="text" class="form-control" id="nursename" placeholder="Enter nurse name">
+									<input type="text" class="form-control" id="nursename" placeholder="Enter Firstname">
 									</div>
 									<div>
 									<label for="datepicker" style="color:#454445;">Lastname</label>
-									<input class="form-control" id="username"type="text" name="username" placeholder="Enter username" required>
+									<input class="form-control" id="username" type="text" name="username" placeholder="Enter Lastname" required>
 									</div>
 									<div class="form-group">
 									<label  style="color:#454445;" for="password">Nurse ID</label>
-									<input class="form-control" type="text"  id="password" placeholder="Enter password" required></input>
+									<input class="form-control" type="text"  id="password" placeholder="Enter Nurse Id" required></input>
+									</div>
+									<div class="form-group">
+									<label  style="color:#454445;" for="password">User ID</label>
+									<input class="form-control" type="text"  id="password" placeholder="Enter User Id" required></input>
 									</div>
 									<div class="form-group">
 									<label  style="color:#454445;" for="password">Contact Info</label>
-									<input class="form-control" type="text"  id="password" placeholder="Enter password" required></input>
+									<input class="form-control" type="text"  id="password" placeholder="Enter contact" required></input>
 									</div>
 									<!--<div class="form-group">
 										<label  style="color:#454445;" for="sel2"></label>
@@ -94,7 +98,6 @@
 				</div>
 			</div>
 		</div>
-=
 <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
