@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Add Nurse Page </title>
+	
+	<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+	<script src="js/myJss.js"></script>
+</head>
+<body>
+
+		<div class="viewCenterform">
+			<form id="viewCenter" method="post">
+			<center><p><span id="error_area"></span></p></center>
+				<div class="form-group">
+				<label style="color:#454445;" >Center Id</label>
+				<input type="text" class="form-control" id="id" placeholder="Enter the id">
+				</div>
+
+				<br></br>
+
+				<div>
+				<label for="datepicker" style="color:#454445;">Center name</label>
+				<input class="form-control" id="center_name" type="text" name="center_name" placeholder="Enter the name of the center" required>
+				</div>
+
+				<br></br>
+
+				<div>
+				<label for="datepicker" style="color:#454445;">Location</label>
+				<input class="form-control" id="location"type="text" name="location" placeholder="Enter the location of the center" required>
+				</div>
+
+				<br></br>
+
+				
+				<input onClick="getCenters()" type="button" value="View Centers">
+				</form>		
+			<input id="did" type="number" ><button onclick="delete_center()">Delete Center</button>	
+		</div>
+
+</body>
+</html>
+
+
+		</div>
+
+</body>
+</html>
+
+
+
+
+
