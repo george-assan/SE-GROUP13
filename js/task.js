@@ -110,5 +110,26 @@ function getUnassignedTasks(){
 
 }
 
+function addnurse(){
+                var fname = encodeURI(document.getElementById("firstname").value);
+                var lname = encodeURI(document.getElementById("lastname").value);
+				var uuser = encodeURI(document.getElementById("username").value);
+				var pass = encodeURI(document.getElementById("password").value);
+                var index = document.getElementById("centerCombo").value;
+                var uid = encodeURI(document.getElementById("userid").value);
+                var nid = encodeURI(document.getElementById("nurseid").value);
+				
+				
+				 var url1 = "controller.php?cmd=7&userid="+uid+"&username="+uname+"&password="+pass+"&permission"+2;
+                var url2 = "controller.php?cmd=8&nurseid="+nid+"&firstname="+fname+"&lastname="+lname+"&centreid="+cid+"&userid="+uid;
+    
+                var obj = sendRequest ( url1 );
+                var obj = sendRequest ( url2 );
+    
+                
+    
+    
+}
+
 
 
