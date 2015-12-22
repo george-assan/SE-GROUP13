@@ -43,7 +43,7 @@ function addTask(){
 
 
 function displayTasks(){
-  var url = "./php/task_controller.php?cmd=2";
+  var url = "php/task_controller.php?cmd=2";
                var obj = sendRequest ( url );
         var i = 0;
         var panel ="<li><input type='text' placeholder='Search'></l1>";
@@ -130,6 +130,42 @@ function addnurse(){
     
     
 }
+
+
+function editnurse(nid){
+               
+                var url = "controller.php?cmd=9&nurseid="+nid;
+                obj = sendRequest(url);
+                
+                
+                if(obj.result== 1){
+                    $("#enurseid").html(obj1.nurses[0].id);
+                //var fname = encodeURI(document.getElementById("efirstname").value);
+                     $("#efirstname").html(obj1.nurses[0].firstname);
+                //var lname = encodeURI(document.getElementById("elastname").value);
+                     $("#elastname").html(obj1.nurses[0].lastname);
+				
+                }
+}
+
+
+
+
+function editnurse(){
+               
+                var nid = encodeURI(document.getElementById("enurseid").value);
+                var fname = encodeURI(document.getElementById("efirstname").value);
+                var lname = encodeURI(document.getElementById("elastname").value);
+    
+                var url = "controller.php?cmd=10&nurseid="+nid+"&firstname="+fname+"&lastname="+lname;
+                var obj = sendRequest ( url );
+    
+ 
+}
+
+
+
+
 
 
 
