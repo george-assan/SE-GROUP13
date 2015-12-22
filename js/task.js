@@ -132,7 +132,7 @@ function addnurse(){
 }
 
 
-function editnurse(nid){
+function getnursedetails(nid){
                
                 var url = "controller.php?cmd=9&nurseid="+nid;
                 obj = sendRequest(url);
