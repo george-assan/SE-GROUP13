@@ -120,8 +120,8 @@ function addnurse(){
                 var nid = encodeURI(document.getElementById("nurseid").value);
 				
 				
-				 var url1 = "controller.php?cmd=7&userid="+uid+"&username="+uname+"&password="+pass+"&permission"+2;
-                var url2 = "controller.php?cmd=8&nurseid="+nid+"&firstname="+fname+"&lastname="+lname+"&centreid="+cid+"&userid="+uid;
+				 var url1 = "php/task_controller.php?cmd=7&userid="+uid+"&username="+uname+"&password="+pass+"&permission"+2;
+                var url2 = "php/task_controller.php?cmd=8&nurseid="+nid+"&firstname="+fname+"&lastname="+lname+"&centreid="+cid+"&userid="+uid;
     
                 var obj = sendRequest ( url1 );
                 var obj = sendRequest ( url2 );
@@ -134,18 +134,19 @@ function addnurse(){
 
 function getnursedetails(nid){
                
-                var url = "controller.php?cmd=9&nurseid="+nid;
+                var url = "php/task_controller.php?cmd=9&nurseid="+nid;
                 obj = sendRequest(url);
                 
                 
                 if(obj.result== 1){
-                    $("#enurseid").html(obj1.nurses[0].id);
-                //var fname = encodeURI(document.getElementById("efirstname").value);
-                     $("#efirstname").html(obj1.nurses[0].firstname);
-                //var lname = encodeURI(document.getElementById("elastname").value);
-                     $("#elastname").html(obj1.nurses[0].lastname);
+                   document.getElementById('enurseid').value = (obj.nurses[0].id);
+                document.getElementById('efirstname').value = (obj.nurses[0].firstname);
+                     document.getElementById('elastname').value = (obj.nurses[0].lastname);
+                    
 				
                 }
+    
+     $('#edit_modal').openModal();
 }
 
 
@@ -157,14 +158,16 @@ function editnurse(){
                 var fname = encodeURI(document.getElementById("efirstname").value);
                 var lname = encodeURI(document.getElementById("elastname").value);
     
-                var url = "controller.php?cmd=10&nurseid="+nid+"&firstname="+fname+"&lastname="+lname;
+                var url = "php/task_controller.php?cmd=10&id="+nid+"&firstname="+fname+"&lastname="+lname;
                 var obj = sendRequest ( url );
+    
+     $('#edit_modal').closeModal();
     
  
 }
 
 function deletenurse(id){
-    var url = "controller.php?cmd=11&nurseid="+nid;
+    var url = "php/task_controller.php?cmd=12&id="+id;
     var obj = sendRequest ( url );
 }
 
@@ -174,10 +177,10 @@ function displayNurses(){
   var url = "php/task_controller.php?cmd=11";
                var obj = sendRequest ( url );
         var i = 0;
-        var panel ="<li><input type='text' placeholder='Search'></l1>";
+        var panel ="";
         if(obj.result== 1){
         for(;i<obj.nurses.length; i++){
-          panel = panel + "<li><a zf-toggle='message'><h5>"+obj.nurses[i].firstname+" ' ' "+obj.nurses[i].lastname+"</h5><p><span id='editbtn'><button class = 'waves-effect waves-light btn modal-trigger'  href = '#edti_modal' onClick = 'getnursedetails("+obj.nurses[i].id+")'>Edit</button></span><span id='deletebtn'><button class = 'waves-effect waves-light btn' onClick = 'deletenurse("+obj.nurses[i].id+")'>Delete</button></span></p></a></li>";
+          panel = panel +"<div class='col s12 m12'><div class='card '><div class='card-content black-text'><span class='card-title' style='color:black'>"+obj.nurses[i].firstname+" "+obj.nurses[i].lastname+"</span></div><div class='card-action'><button class = 'waves-effect waves-light btn modal-trigger'  href = '#edit_modal' onClick = 'getnursedetails("+obj.nurses[i].id+")'>Edit</button><button class = 'waves-effect waves-light btn' onClick = 'deletenurse("+obj.nurses[i].id+")'>Delete</button></div></div></div</div>"
         }
         $("#nurseview").html(panel);
       }

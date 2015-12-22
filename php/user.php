@@ -32,9 +32,9 @@ class User extends adb
 	* @return returns a boolean value
     **/
 
-    function add_user ($username,$password)
+    function add_user ($id,$username,$password)
     {
-		$insert_query = "insert into users set username='$username',password = '$password'";
+		$insert_query = "insert into users set id = '$id' , username='$username',password = '$password'";
         return $this->query ($insert_query);
     }
     /**

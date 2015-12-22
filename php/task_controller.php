@@ -24,7 +24,25 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
             break; 
          case 6:
            getUnassignedtask();
-            break;    
+            break;
+            case 7:
+           adduser();
+            break;
+            case 8:
+           addnurse();
+            break;
+            case 9:
+           getnurse();
+            break;
+            case 10:
+           editnurse();
+            break;
+        case 11:
+           getallnurses();
+            break;
+             case 12:
+           deletenurse();
+            break;
         default:
             echo '{"result":0,message:"failed command"}';
             break;
@@ -164,4 +182,124 @@ function getUnassignedtask(){
 
 
 }
+
+
+function adduser(){
+    include("user.php");
+	$obj=new User();
+	$id=$_REQUEST['id'];
+	$username=$_REQUEST['username'];
+	$password=$_REQUEST['password'];
+	//$supv_id=$_REQUEST['sid'];
+	
+	if(!$obj->add_user($id,$username,$password)){
+		echo  '{"result":0,"message": "failed to add user"}';
+	}
+	else{
+		echo  '{"result":1,"message": "Successfully added user"}';
+	
+	}
+    
+}
+
+function addnurse(){
+    
+    include("nurse.php");
+	$obj=new nurse();
+	$id=$_REQUEST['id'];
+	$uid=$_REQUEST['uid'];
+	$firstname=$_REQUEST['fname'];
+	$lastname=$_REQUEST['sid'];
+    $cid=$_REQUEST['sid'];
+	
+	if(!$obj->add_nurse($id,$uid,$firstname,$lastname, cid)){
+		echo  '{"result":0,"message": "failed to add nurse"}';
+	}
+	else{
+		echo  '{"result":1,"message": "Successfully added nurse"}';
+	
+	}
+}
+
+function getnurse(){
+    include("nurse.php");
+	$obj=new nurse();
+    $id=$_REQUEST['nurseid'];
+	if(!$obj->getnurse($id)){
+		echo '{"result":0,"message": "failed to display"}';
+		return;
+	}
+	//at this point the search has been successful. 
+	//generate the JSON message to echo to the browser
+	$row=$obj->fetch();
+	echo '{"result":1,"nurses":[';	//start of json object
+	while($row){
+		echo json_encode($row);			//convert the result array to json object
+		$row=$obj->fetch();
+		if($row){
+			echo ",";					//if there are more rows, add comma 
+		}
+	}
+	echo "]}";	
+}
+
+function editnurse(){
+    
+        
+    include("nurse.php");
+	$obj=new nurse();
+	$id=$_REQUEST['id'];
+	$firstname=$_REQUEST['firstname'];
+	$lastname=$_REQUEST['lastname'];
+	
+	if(!$obj->editnurse($id,$firstname,$lastname)){
+		echo  '{"result":0,"message": "failed to add nurse"}';
+	}
+	else{
+		echo  '{"result":1,"message": "Successfully added nurse"}';
+	
+	}
+}
+
+function getallnurses(){
+     include("nurse.php");
+	$obj=new nurse();
+	if(!$obj->getallnurses()){
+		echo '{"result":0,"message": "failed to display"}';
+		return;
+	}
+	//at this point the search has been successful. 
+	//generate the JSON message to echo to the browser
+	$row=$obj->fetch();
+	echo '{"result":1,"nurses":[';	//start of json object
+	while($row){
+		echo json_encode($row);			//convert the result array to json object
+		$row=$obj->fetch();
+		if($row){
+			echo ",";					//if there are more rows, add comma 
+		}
+	}
+	echo "]}";	
+    
+}
+
+function deletenurse(){
+    include("nurse.php");
+	$obj=new nurse();
+	$id=$_REQUEST['id'];
+	
+	
+	if(!$obj->deletenurse($id)){
+		echo  '{"result":0,"message": "failed to delete nurse"}';
+	}
+	else{
+		echo  '{"result":1,"message": "Successfully deleted nurse"}';
+	
+	}
+    
+    getallnurses();
+}
+
 ?>
+
+
