@@ -163,6 +163,11 @@ function editnurse(){
  
 }
 
+function deletenurse(id){
+    var url = "controller.php?cmd=11&nurseid="+nid;
+    var obj = sendRequest ( url );
+}
+
 
 
 
