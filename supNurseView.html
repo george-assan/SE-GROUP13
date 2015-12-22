@@ -67,6 +67,30 @@
             <a href="admin-unassignedtasks.html"><span>Unassigned tasks</span></a>
             <a><span>Completed tasks</span></a>
         </div>-->
+        
+         <!-- Edit nurse Modal -->
+  <div id="edit_modal" class="modal">
+    <div class="modal-content">
+     <form>
+									<div class="form-group">
+									<label style="color:#454445;" >Nurse id</label>
+									<input type="text" class="form-control" id="enurseid" placeholder="" disabled>
+									</div>
+									<div class="form-group">
+									<label style="color:#454445;" >Firstname</label>
+									<input type="text" class="form-control" id="efirstname" placeholder="Enter Firstname">
+									</div>
+         <div class="form-group">
+									<label style="color:#454445;" >Lastname</label>
+									<input type="text" class="form-control" id="elastname" placeholder="Enter Firstname">
+									</div>
+         <button onClick="editnurse()" type="button" class="waves-effect waves-light btn">
+												Edit
+					                  </button>
+								</form>		
+    </div>
+    
+  </div>
        
             <div class="container-fluid">
                
@@ -74,6 +98,9 @@
   <div class="panel-body"><div><span style="float:; margin:10px"><a href="addnurse.php"><button class="waves-effect waves-light btn" id="nurse-btn">Add Nurse</button></a><a href="nurseSearch.php"><button class="waves-effect waves-light btn" id="nurse-btn">Search Nurse</button></a><a href=""><button class="waves-effect waves-light btn" id="nurse-btn">View all</button></a></span>
 </div>
             </div>
+                    <div id = "nurseview">
+                    
+                    </div>
         </div>
         <!-- /#page-content-wrapper -->
 

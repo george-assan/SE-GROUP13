@@ -85,11 +85,11 @@
 									<label  style="color:#454445;" for="password">Contact Info</label>
 									<input class="form-control" type="text"  id="password" placeholder="Enter contact" required></input>
 									</div>
-									<!--<div class="form-group">
-										<label  style="color:#454445;" for="sel2"></label>
-											<select class="form-control" id="sel2" required>
+									<div class="form-group">
+										<label  style="color:#454445;" for="centerCombo"></label>
+											<select class="form-control" id="centerCombo" required>
 											</select>
-										</div>-->
+										</div>
 									<button onClick="addnurse()" type="button" class="waves-effect waves-light btn">
 												Add
 					                  </button>
@@ -104,6 +104,8 @@
     <script src="js/bootstrap.min.js"></script>
      <!-- Materialize Core JavaScript -->
     <script src="materialize/js/materialize.js"></script>
+    <!-- app js -->
+    <script src="js/task.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
@@ -111,6 +113,10 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+         window.onload = function() {
+             populateCenterCombo();
+         };
+        
     </script>
 
 </body>

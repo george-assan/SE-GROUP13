@@ -170,7 +170,27 @@ function deletenurse(id){
 
 
 
+function displayNurses(){
+  var url = "php/task_controller.php?cmd=11";
+               var obj = sendRequest ( url );
+        var i = 0;
+        var panel ="<li><input type='text' placeholder='Search'></l1>";
+        if(obj.result== 1){
+        for(;i<obj.nurses.length; i++){
+          panel = panel + "<li><a zf-toggle='message'><h5>"+obj.nurses[i].firstname+" ' ' "+obj.nurses[i].lastname+"</h5><p><span id='editbtn'><button class = 'waves-effect waves-light btn modal-trigger'  href = '#edti_modal' onClick = 'getnursedetails("+obj.nurses[i].id+")'>Edit</button></span><span id='deletebtn'><button class = 'waves-effect waves-light btn' onClick = 'deletenurse("+obj.nurses[i].id+")'>Delete</button></span></p></a></li>";
+        }
+        $("#nurseview").html(panel);
+      }
+       else{
+        
+       }
+}
 
 
+$(document).ready(function(){
+                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                $('.modal-trigger').leanModal();
+                
+              });
 
 
