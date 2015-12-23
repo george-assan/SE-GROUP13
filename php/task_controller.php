@@ -209,10 +209,10 @@ function addnurse(){
 	$id=$_REQUEST['id'];
 	$uid=$_REQUEST['uid'];
 	$firstname=$_REQUEST['fname'];
-	$lastname=$_REQUEST['sid'];
-    $cid=$_REQUEST['sid'];
+	$lastname=$_REQUEST['lname'];
+    $cid=$_REQUEST['cid'];
 	
-	if(!$obj->add_nurse($id,$uid,$firstname,$lastname, cid)){
+	if(!$obj->add_nurse($id,$uid,$firstname,$lastname, $cid)){
 		echo  '{"result":0,"message": "failed to add nurse"}';
 	}
 	else{

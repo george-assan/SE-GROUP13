@@ -67,23 +67,27 @@
 								<form>
 									<div class="form-group">
 									<label style="color:#454445;" >Firstname</label>
-									<input type="text" class="form-control" id="nursename" placeholder="Enter Firstname">
+									<input type="text" class="form-control" id="firstname" placeholder="Enter Firstname">
 									</div>
 									<div>
 									<label for="datepicker" style="color:#454445;">Lastname</label>
-									<input class="form-control" id="username" type="text" name="username" placeholder="Enter Lastname" required>
+									<input class="form-control"  type="text" id="lastname" placeholder="Enter Lastname" required>
 									</div>
 									<div class="form-group">
 									<label  style="color:#454445;" for="password">Nurse ID</label>
-									<input class="form-control" type="text"  id="password" placeholder="Enter Nurse Id" required></input>
+									<input class="form-control" type="text"  id="nurseid" placeholder="Enter Nurse Id" required></input>
 									</div>
 									<div class="form-group">
 									<label  style="color:#454445;" for="password">User ID</label>
-									<input class="form-control" type="text"  id="password" placeholder="Enter User Id" required></input>
+									<input class="form-control" type="text"  id="userid" placeholder="Enter User Id" required></input>
 									</div>
 									<div class="form-group">
-									<label  style="color:#454445;" for="password">Contact Info</label>
-									<input class="form-control" type="text"  id="password" placeholder="Enter contact" required></input>
+									<label  style="color:#454445;" for="password">Username</label>
+									<input class="form-control" type="text"  id="username" placeholder="Enter username" required></input>
+									</div>
+                                    <div class="form-group">
+									<label  style="color:#454445;" for="password">Password</label>
+									<input class="form-control" type="text"  id="password" placeholder="Enter password" required></input>
 									</div>
 									<div class="form-group">
 										<label  style="color:#454445;" for="centerCombo"></label>

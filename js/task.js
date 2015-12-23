@@ -113,18 +113,18 @@ function getUnassignedTasks(){
 function addnurse(){
                 var fname = encodeURI(document.getElementById("firstname").value);
                 var lname = encodeURI(document.getElementById("lastname").value);
-				var uuser = encodeURI(document.getElementById("username").value);
+				var uname = encodeURI(document.getElementById("username").value);
 				var pass = encodeURI(document.getElementById("password").value);
-                var index = document.getElementById("centerCombo").value;
+                var cid = document.getElementById("centerCombo").value;
                 var uid = encodeURI(document.getElementById("userid").value);
                 var nid = encodeURI(document.getElementById("nurseid").value);
 				
 				
-				 var url1 = "php/task_controller.php?cmd=7&userid="+uid+"&username="+uname+"&password="+pass+"&permission"+2;
-                var url2 = "php/task_controller.php?cmd=8&nurseid="+nid+"&firstname="+fname+"&lastname="+lname+"&centreid="+cid+"&userid="+uid;
+				 var url1 = "php/task_controller.php?cmd=7&id="+uid+"&username="+uname+"&password="+pass+"&permission"+2;
+                var url2 = "php/task_controller.php?cmd=8&id="+nid+"&fname="+fname+"&lname="+lname+"&cid="+cid+"&uid="+uid;
     
                 var obj = sendRequest ( url1 );
-                var obj = sendRequest ( url2 );
+                var obj1 = sendRequest ( url2 );
     
                 
     
